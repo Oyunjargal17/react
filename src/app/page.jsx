@@ -39,13 +39,15 @@ const Profile = () => {
         <div className={style.too}>
           <div className={style.userStat}>
             <img src="/followersContainer.svg" alt="followers" />
-            <p>312</p>
+            <p className={style.dagagch}>312</p>
           </div>
           <div className={style.userStat}>
             <img src="/projectsContainer.svg" alt="projectsContainer" />
-            <p>48</p>
+            <p className={style.dagagch}>48</p>
           </div>
-          <button>Follow +</button>
+          <div className={style.btn}>
+            <button className={style.btnSelf}>Follow +</button>
+          </div>
         </div>
       </div>
     </div>
