@@ -1,0 +1,78 @@
+/* .box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.box__text {
+  font-size: 100px;
+} */
+
+.profile {
+  border-radius: 50%;
+}
+
+.img {
+  object-fit: cover;
+  border-radius: 32px;
+  width: 264px;
+  height: 280px;
+  padding: 5px 8px;
+  border: 1.5px solid;
+  border-image-source: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(63, 71, 72, 0.06) 100%
+  );
+}
+.container {
+  width: fit-content;
+  border-radius: 10px;
+  overflow: hidden;
+  /* background-color: rgba(252, 252, 252, 0.95); */
+  background-color: rgba(252, 252, 252, 0.95);
+}
+
+.userInfo__desc {
+  width: 264px;
+}
+.bod {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ner {
+  display: flex;
+  width: 250px;
+  height: 33px;
+  gap: 10px;
+  padding: 2px 20px;
+}
+.nerP {
+  font-weight: 500px;
+  font-style: Medium;
+  font-size: 22px;
+  line-height: 150%;
+  letter-spacing: 0%;
+}
+.nerIcon {
+  width: 23px;
+  height: 23px;
+}
+.userInfo__desc {
+  width: 250px;
+  height: 46px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 150%;
+  letter-spacing: -2%;
+  color: rgba(118, 118, 118, 1);
+  padding: 0 20px;
+}
+.userStat {
+  display: flex;
+  gap: 5px;
+  padding: 10px 20px;
+}
+.too {
+  display: flex;
+}
