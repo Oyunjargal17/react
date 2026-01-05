@@ -1,11 +1,11 @@
 "use client";
-export default function Home() {
-  const car = { brand: "Tesla", model: "Model 3", year: 2023 };
-  return <Car car={car} />; //Example 4
-  //   return <DrinksWater />; //Example 3
-  //   return <Double number={8} />; //Example 1
-  //   return <ColorList />; //Example 2
-}
+// export default function Home() {
+//   const car = { brand: "Tesla", model: "Model 3", year: 2023 };
+//   return <Car car={car} />; //Example 4
+//   return <DrinksWater />; //Example 3
+//   return <Double number={8} />; //Example 1
+//   return <ColorList />; //Example 2
+// }
 // const ColorList = () => {  //Example 2
 //   const colors = ["red", "blue", "green"];
 //   return (
@@ -32,12 +32,48 @@ export default function Home() {
 // };
 
 //Example 4
-const Car = ({ car }) => {
-  const { brand, model, year } = car;
+// const Car = ({ car }) => {
+//   const { brand, model, year } = car;
 
-  return (
-    <div>
-      Brand: {brand}, Model: {model}, Year: {year}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       Brand: {brand}, Model: {model}, Year: {year}
+//     </div>
+//   );
+// };
+// import { Button } from "../components/Button";
+
+// import Button from "../components/Button";
+
+// const Es6Page = () => {
+//   return (
+//     <div>
+//       <Button />
+//     </div>
+//   );
+// };
+
+// export default Es6Page;
+
+// const Es6Page = () => {
+//   return (
+//     <div>
+//       <Status stock={6} />
+//     </div>
+//   );
+// };
+// export default Es6Page;
+
+// const Status = ({ stock }) => {
+//   console.log(stock);
+
+//   return (
+//     <div>
+//       {stock > 0 ? (
+//         <p className="text-green-500">In Stock</p>
+//       ) : (
+//         <p className="text-red-500">Out of Stock</p>
+//       )}
+//     </div>
+//   );
+// };
