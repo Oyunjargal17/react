@@ -1,6 +1,6 @@
 "use client";
 
-import image from "next/image";
+// import image from "next/image";
 
 // export default function Home() {
 //   const car = { brand: "Tesla", model: "Model 3", year: 2023 };
@@ -80,7 +80,7 @@ import image from "next/image";
 //     </div>
 //   );
 // };
-
+import { useState } from "react";
 export default function Home() {
   return (
     <div className="bg-pink-100 h-screen flex justify-center items-center">
@@ -127,14 +127,24 @@ const birthday = [
 ];
 
 const BirthdayList = () => {
+  const [birthdayList, setBirthdayList] = useState(birthday);
+  const clearList = () => {
+    setBirthdayList([]);
+  };
   return (
     <div className="p-10 bg-white">
       <h1 className="text-3xl font-semibold mb-8">Birthday Today</h1>
       <div className="flex flex-col gap-4">
-        {birthday.map(({ id, name, age, image }) => (
+        {birthdayList.map(({ id, name, age, image }) => (
           <BirthdayListItem key={id} name={name} age={age} image={image} />
         ))}
       </div>
+      <button
+        onClick={clearList}
+        className="bg-pink-300 text-white w-full p-3 font-semibold text-xl cursor-pointer"
+      >
+        Clear All
+      </button>
     </div>
   );
 };
@@ -150,3 +160,22 @@ const BirthdayListItem = ({ name, age, image }) => {
     </div>
   );
 };
+// import { useState } from "react"; //useState render dahij uzeh
+// export default function Home() {
+//   const [num, setNum] = useState(0);
+//   const increment = () => {
+//     setNum(num + 1);
+//   };
+//   const hasah = () => {
+//     setNum(num - 1);
+//   };
+//   return (
+//     <div className="ml-20">
+//       <button className="bg-gray-300 py-2 px-3" onClick={increment}>
+//         num+
+//       </button>
+//       <button onClick={hasah}>num-</button>
+//       <h1>{num}</h1>
+//     </div>
+//   );
+// }
