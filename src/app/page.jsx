@@ -1,3 +1,4 @@
+"use client";
 // import style from "./page.module.css";
 // export default function Home() {
 //   const value= 'hello world'
@@ -426,3 +427,178 @@
 //   return <div>{props.props100}</div>;
 // };
 // ========================================
+// 🟢 1-р бодлого (ХЯЛБАР)
+// 🎯 Зорилго
+
+// Parent компонентээс нэр (props) дамжуулна.
+// Child компонент тоо нэмдэг (useState) байна.
+
+// ❓ Даалгавар
+
+// Parent → name="Бат"
+
+// Child → button дарахад тоо нэмэгдэнэ
+
+// Нэр props-оор орж ирнэ
+// import { useState } from "react";
+
+// export default function Parent() {
+//   return <Counter name="Bat" />;
+// }
+
+// const Counter = ({ name }) => {
+//   const [count, setCount] = useState(0);
+//   return (
+//     <div>
+//       <p>
+//         {name}- too: {count}
+//       </p>
+//       <button onClick={() => setCount(count + 1)}>Nemeh</button>
+//     </div>
+//   );
+// };
+
+// 🟢 2-р бодлого (ХЯЛБАР → ДУНД)
+// 🎯 Зорилго
+
+// Parent-оос эхлэх тоо (props) авна.
+// Child түүнийг state болгоод нэмнэ.
+
+// ❓ Даалгавар
+
+// Parent → start={5}
+
+// Child → эхний тоо 5-аас эхэлнэ
+
+// Button дарж нэмнэ
+// import { useState } from "react";
+
+// export default function Parent() {
+//   return <Counter start={5} />;
+// }
+
+// const Counter = ({ start }) => {
+//   const [count, setCount] = useState(start);
+//   return (
+//     <div>
+//       <p> Too: {count}</p>
+//       <button onClick={() => setCount(count + 1)}>Nemeh</button>
+//     </div>
+//   );
+// };
+
+// 🟡 3-р бодлого (ДУНД)
+// 🎯 Зорилго
+
+// Parent → гарчиг (props)
+// Child → input + useState
+
+// ❓ Даалгавар
+
+// Parent → title="Таны нэр"
+
+// Child → input-д бичсэн нэрийг харуулна
+// import { useState } from "react";
+
+// export default function Parent() {
+//   return <Child title="Tanii ner" />;
+// }
+
+// const Child = ({ title }) => {
+//   const [name, setName] = useState("");
+//   return (
+//     <div>
+//       <h3>{title}</h3>
+//       <input onChange={(e) => setName(e.target.value)} />
+//       <p>Sain bna uu? {name}</p>
+//     </div>
+//   );
+// };
+
+// 🟡 4-р бодлого (ДУНД)
+// 🎯 Зорилго
+
+// Child → input-д бичсэн утгыг
+// 👉 Parent руу дамжуулах
+
+// ❓ Даалгавар
+
+// Parent → state-тэй
+
+// Child → onChange үед parent-д дамжуулна
+
+// ✅ Хариу
+// 👨 Parent.jsx
+// import { useState } from "react";
+// import Child from "./Child";
+
+// export default function Parent() {
+//   const [text, setText] = useState("");
+
+//   function handleText(value) {
+//     setText(value);
+//   }
+
+//   return (
+//     <div>
+//       <h2>Parent: {text}</h2>
+//       <Child onSend={handleText} />
+//     </div>
+//   );
+// }
+
+// 👧 Child.jsx
+// export default function Child({ onSend }) {
+//   return (
+//     <input onChange={(e) => onSend(e.target.value)} />
+//   );
+// }
+
+// 🟡 5-р бодлого (ДУНД → АХИСАН)
+// 🎯 Зорилго
+
+// НЭГ Parent → ОЛОН Child
+// Props + useState
+
+// ❓ Даалгавар
+
+// Parent → нийт тоо хадгална
+
+// Child бүр +1 нэмдэг button
+
+// ✅ Хариу
+// 👨 Parent.jsx
+// import { useState } from "react";
+// import Child from "./Child";
+
+// export default function Parent() {
+//   const [count, setCount] = useState(0);
+
+//   function addOne() {
+//     setCount(count + 1);
+//   }
+
+//   return (
+//     <div>
+//       <h2>Нийт: {count}</h2>
+//       <Child onAdd={addOne} />
+//       <Child onAdd={addOne} />
+//       <Child onAdd={addOne} />
+//     </div>
+//   );
+// }
+
+// 👧 Child.jsx
+// export default function Child({ onAdd }) {
+//   return (
+//     <button onClick={onAdd}>
+//       +1
+//     </button>
+//   );
+// }
+
+// 🧠 Эцсийн дүгнэлт (цээжлэх)
+
+// 1️⃣ Props → гаднаас ирдэг
+// 2️⃣ useState → дотроо хадгалдаг
+// 3️⃣ Child → function дуудаж → Parent өөрчилдөг

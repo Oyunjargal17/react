@@ -15,35 +15,35 @@ const tour = [
   {
     id: 1,
     image: "/paris.png",
-    price: "",
+    price: "$2000",
     title: "Best Of Paris In 7 Days Tour",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi illum sequi illo sed nam impedit blanditiis maiores, repudiandae alias deleniti. A eius incidunt veritatis repellendus aut? Dolor exercitationem a tempora!",
   },
   {
     id: 2,
     image: "/ireland.png",
-    price: "",
+    price: "$1800",
     title: "Best Of Paris In 7 Days Tour",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi illum sequi illo sed nam impedit blanditiis maiores, repudiandae alias deleniti. A eius incidunt veritatis repellendus aut? Dolor exercitationem a tempora!",
   },
   {
     id: 3,
     image: "/vienna.png",
-    price: "",
+    price: "$2200",
     title: "Best Of Paris In 7 Days Tour",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi illum sequi illo sed nam impedit blanditiis maiores, repudiandae alias deleniti. A eius incidunt veritatis repellendus aut? Dolor exercitationem a tempora!",
   },
   {
     id: 4,
     image: "/rome.png",
-    price: "",
+    price: "$1900",
     title: "Best Of Paris In 7 Days Tour",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi illum sequi illo sed nam impedit blanditiis maiores, repudiandae alias deleniti. A eius incidunt veritatis repellendus aut? Dolor exercitationem a tempora!",
   },
   {
     id: 5,
     image: "/poland.png",
-    price: "",
+    price: "$1700",
     title: "Best Of Paris In 7 Days Tour",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi illum sequi illo sed nam impedit blanditiis maiores, repudiandae alias deleniti. A eius incidunt veritatis repellendus aut? Dolor exercitationem a tempora!",
   },
@@ -51,22 +51,27 @@ const tour = [
 
 const TourList = () => {
   const [tourList, setTourList] = useState(tour);
-  const clearList = () => {
-    setTourList([]);
+  // const clearList = () => {
+  //   setTourList([]);
+  // };
+  const notInterested = (id) => {
+    setTourList(tourList.filter((item) => item.id !== id));
+    console.log("id", id);
   };
   return (
-    <div className=" flex justify-center">
-      <div></div>
+    <div className="flex justify-center">
       <div>
         <div className="grid grid-cols-3 gap-3">
           {tourList.map(({ id, image, price, title, text }) => (
             <TourListItem
               key={id}
+              id={id}
               image={image}
               price={price}
               title={title}
               text={text}
-              clearList={clearList}
+              // clearList={clearList}
+              notInterested={notInterested}
             />
           ))}
         </div>
@@ -75,7 +80,15 @@ const TourList = () => {
   );
 };
 
-const TourListItem = ({ image, price, title, text, clearList }) => {
+const TourListItem = ({
+  id,
+  image,
+  price,
+  title,
+  text,
+  // clearList,
+  notInterested,
+}) => {
   return (
     <div>
       <div className="w-90 h-160 bg-white flex flex-col rounded-2xl ">
@@ -90,7 +103,7 @@ const TourListItem = ({ image, price, title, text, clearList }) => {
         </div>
         <div className="flex justify-center">
           <button
-            onClick={clearList}
+            onClick={() => notInterested(id)}
             className="bg-gray-500 rounded-sm w-50 h-12.5"
           >
             Not Interested
