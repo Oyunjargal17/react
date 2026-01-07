@@ -1,13 +1,16 @@
 "use client";
 import { useState } from "react";
 export default function Home() {
+  const [hasTours, setHasTours] = useState(true);
   return (
     <div className=" bg-gray-100 h-screens flex flex-col gap-6 justify-center items-center">
-      <h1 className="text-4xl pb-4 text-center border-b-4 w-50 border-b-green-500">
-        Our Tours
-      </h1>
+      {hasTours && (
+        <h1 className="text-4xl pb-4 text-center border-b-4 w-50 border-b-green-500">
+          Our Tours
+        </h1>
+      )}
 
-      <TourList />
+      <TourList setHasTours={setHasTours} />
     </div>
   );
 }
@@ -49,25 +52,32 @@ const tour = [
   },
 ];
 
-const TourList = () => {
+const TourList = ({ setHasTours }) => {
   const [tourList, setTourList] = useState(tour);
   const notInterested = (id) => {
-    setTourList(tourList.filter((item) => item.id !== id));
-    console.log("id", id);
+    const newList = tourList.filter((item) => item.id !== id);
+    setTourList(newList);
+    if (newList.length === 0) {
+      setHasTours(false);
+    }
   };
   const reset = () => {
     setTourList(tour);
+    setHasTours(true);
   };
   return (
     <div className="flex justify-center h-screen">
       <div>
         {tourList.length === 0 && (
-          <button
-            onClick={reset}
-            className=" justify-self-center border-2 border-solid border-[#0bb980] rounded-sm w-50 h-7.5 mb-4 text-green-700 hover:bg-green-700 hover:text-white"
-          >
-            reset
-          </button>
+          <div>
+            <h1 className="text-4xl pb-4 text-center  w-50">no tours left</h1>
+            <button
+              onClick={reset}
+              className=" justify-self-center border-2 border-solid border-[#0bb980] rounded-sm w-50 h-7.5 mb-4 text-green-700 hover:bg-green-700 hover:text-white"
+            >
+              reset
+            </button>
+          </div>
         )}
         <div className="grid grid-cols-3 gap-3">
           {tourList.map(({ id, image, price, title, text }) => (
@@ -107,7 +117,7 @@ const TourListItem = ({ id, image, price, title, text, notInterested }) => {
           </p>
         </div>
         <div>
-          <h3 className="pt-6 p-2.5 flex justify-center text-3xl font-bold">
+          <h3 className="pt-6 p-2.5 flex justify-center text-2xl font-bold">
             {title}
           </h3>
           <p className="ml-2 p-2 flex justify-center w-80">{newText}</p>
