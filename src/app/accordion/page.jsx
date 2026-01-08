@@ -41,8 +41,10 @@ const QuestionList = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1 className="font-semibold p-20 text-5xl">Questions</h1>
-      <div className=" bg-gray-200 w-200 h-250">
+      <div className=" bg-white rounded-2xl w-200 h-fit flex flex-col gap-[30px] mt-30">
+        <h1 className="font-semibold p-8 text-5xl text-center text-[#334155]">
+          Questions
+        </h1>
         {questionList.map(({ id, title, text }) => (
           <QuestionListItem key={id} id={id} title={title} text={text} />
         ))}
@@ -62,9 +64,9 @@ const QuestionListItem = ({ id, title, text }) => {
 
   return (
     <div>
-      <div className="flex flex-col gap-4 bg-white rounded-2xl p-6">
+      <div className="flex flex-col gap-4 bg-white rounded-2xl p-6 mx-8 my-4 shadow-xl/20">
         <div className="flex justify-between items-center">
-          <h1 className="font-semibold text-2xl ">{title}</h1>
+          <h1 className="font-semibold text-2xl text-[#566272] ">{title}</h1>
 
           {isShowText ? (
             <div className="flex">
@@ -84,7 +86,7 @@ const QuestionListItem = ({ id, title, text }) => {
             </button>
           )}
         </div>
-        {isShowText && <p className="text-gray-700">{text}</p>}
+        {isShowText && <p className="text-[#6c7b90]">{text}</p>}
       </div>
     </div>
   );

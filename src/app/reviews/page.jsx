@@ -41,23 +41,17 @@ const reviews = [
 const ReviewList = () => {
   const [index, setIndex] = useState(0);
   const prevPerson = () => {
-    setIndex((prev) => {
-      if (prev === 0) {
-        return reviews.length - 1;
-      }
-      return prev - 1;
-    });
+    setIndex(index === 0 ? reviews.length - 1 : index - 1);
   };
   const nextPerson = () => {
-    setIndex((next) => {
-      if (next === reviews.length - 1) {
-        return 0;
-      }
-      return next + 1;
-    });
+    setIndex(index === reviews.length - 1 ? 0 : index + 1);
+  };
+  const randomPerson = () => {
+    const randomIndex = Math.floor(Math.random() * reviews.length);
+    setIndex(randomIndex);
   };
   return (
-    <div className="bg-white w-200 rounded-2xl flex flex-col justify-center items-center">
+    <div className="bg-white w-150 p-6 rounded-2xl flex flex-col justify-center items-center shadow-lg">
       <div>
         <ReviewListItem
           key={reviews[index].id}
@@ -69,11 +63,19 @@ const ReviewList = () => {
         />
       </div>
       <div className="flex gap-3">
-        <button onClick={prevPerson} className="bg-gray-400">
-          prev
+        <button onClick={prevPerson} className="text-[#3c379a] text-4xl">
+          «
         </button>
-        <button onClick={nextPerson} className="bg-green-400">
-          next
+        <button onClick={nextPerson} className="text-[#3c379a] text-4xl">
+          »
+        </button>
+      </div>
+      <div>
+        <button
+          onClick={randomPerson}
+          className="bg-[#c0beff] text-[#665fff] text-[12px] rounded-sm p-1 mt-2 w-[100px]"
+        >
+          Surprise Me
         </button>
       </div>
     </div>
@@ -84,14 +86,23 @@ const ReviewListItem = ({ id, image, name, job, text }) => {
   return (
     <div>
       <div className="flex flex-col justify-center items-center">
-        <img
-          className=" w-37.5 h-37.5 rounded-[50%] p-2 "
-          src={image}
-          alt="profile"
-        />
-        <h1 className="font-semibold text-2xl">{name}</h1>
-        <p className="text-indigo-300 text-lg font-medium p-1">{job}</p>
-        <p className="text-center text-base p-5">{text}</p>
+        <div className="relative inline-block">
+          <div className="absolute -top-2 -right-2 w-30 h-30 rounded-full border-[12px] border-[#645dff]"></div>
+          <img
+            className=" w-30 h-30 rounded-full object-cover relative z-10 "
+            src={image}
+            alt="profile"
+          />
+          <div className="absolute top-2 left-1 bg-[#645dff] w-8 h-8 rounded-full flex justify-center items-center text-white text-2xl z-20 shadow-lg">
+            ❞
+          </div>
+        </div>
+
+        <h1 className="font-semibold text-2xl text-[#0e172a] mt-[10px]">
+          {name}
+        </h1>
+        <p className="text-[#756fff] text-lg font-medium p-1">{job}</p>
+        <p className="text-center text-base p-3 text-[#485468]">{text}</p>
       </div>
     </div>
   );
